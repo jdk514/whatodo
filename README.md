@@ -1,7 +1,7 @@
-Djangular-Todo
+Whatodo
 =================
 
-###This Application is a simple task tracker using TrackMaven's Djangular application
+###This Application is a simple task tracker using Django, RestAPI, and Angular
 
 **Base URL /todo/**
 
