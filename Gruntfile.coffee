@@ -3,14 +3,14 @@ module.exports = (grunt) ->
         pkg: grunt.file.readJSON('package.json')
         watch:
             coffeescript:
-                files: ['djangular/frontend/**/*.coffee']
+                files: ['whatodo/frontend/**/*.coffee']
                 tasks: ['coffee:compile']
         coffee:
             compile:
                 expand: true
-                cwd: 'djangular/frontend/'
+                cwd: 'whatodo/frontend/'
                 src: ['**/*.coffee']
-                dest: 'djangular/static/js/'
+                dest: 'whatodo/static/js/'
                 ext: '.js'
 
 

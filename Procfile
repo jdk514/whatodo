@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath djangular config.wsgi
+web: gunicorn --pythonpath whatodo config.wsgi
