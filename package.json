@@ -1,0 +1,25 @@
+{
+  "name": "Djangular",
+  "version": "0.0.0",
+  "description": "Djangular ================= Talk/Slides: [http://mattcamilli.com/talks/djangular/#/](http://mattcamilli.com/talks/djangular/#/)",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-coffee": "^0.7.0",
+    "grunt-contrib-watch": "^0.5.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdk514/Djangular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jdk514/Djangular/issues"
+  }
+}
