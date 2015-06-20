@@ -1,7 +1,7 @@
 {
   "name": "Whatodo",
   "version": "0.0.1",
-  "description": "Djangular ================= Talk/Slides: [http://mattcamilli.com/talks/djangular/#/](http://mattcamilli.com/talks/djangular/#/)",
+  "description": "Whatodo - Rest driven todo list)",
   "main": "index.js",
   "dependencies": {
     "grunt": "^0.4.5",
@@ -15,11 +15,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdk514/Djangular.git"
+    "url": "https://github.com/jdk514/whatodo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jdk514/Djangular/issues"
+    "url": "https://github.com/jdk514/whatodo/issues"
   }
 }
