@@ -23,15 +23,15 @@ Task Tracker
                         </div>
                         <div class="form-group">
                             <label for="date">Due Date:</label>
-                            <input ng-model="$parent.date" name="date" type="datetime">
+                            <input ng-model="$parent.date" name="date" type="datetime-local">
                         </div>
                         <input type="submit" value="Add Meeting" class="btn btn-info" />
                     </form>                    
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover">
-                    	<tr ng-repeat="meeting in meetings">
-                    		<td>
+                        <tr ng-repeat="meeting in meetings">
+                            <td>
                                 <div class="pull-left span8">[[meeting.meeting]]</div>
                                 <div class="pull-right span4">[[meeting.date]]</div>
                             </td>
@@ -51,7 +51,7 @@ Task Tracker
                         </div>
                         <div class="form-group">
                             <label for="due_date">Due Date:</label>
-                            <input ng-model="$parent.due_date" name="due_date" type="datetime">
+                            <input ng-model="$parent.due_date" name="due_date" type="datetime-local">
                         </div>
                         <input type="submit" value="Add Task" class="btn btn-info" />
                     </form>

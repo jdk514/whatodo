@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+        <div class="row">
+            <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>Login</h3>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input id="username" name="username" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">password</label>
+                            <input name="password" type="password">
+                        </div>
+                        <input type="submit" class="btn btn-info" />
+                    </form>                    
+                </div>
+               <!--  <div class="panel-body">
+                    <table class="table table-hover">
+                        <tr ng-repeat="username in usernames">
+                            <td>
+                                <div class="pull-left span8">[[username.username]]</div>
+                                <div class="pull-right span4">[[username.date]]</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

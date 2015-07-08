@@ -3,6 +3,11 @@ from .models import Task, Meeting
 from .serializers import TaskSerializer, MeetingSerializer
 from django.shortcuts import render
 from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def home(request):
+  return HttpResponse('Home Page')
 
 
 
@@ -65,4 +70,8 @@ class MeetingList(generics.ListCreateAPIView):
 		return meetings
 
 def index(request):
-    return render(request, 'todo/index.html')
+	# if request.user.is_authenticated():
+	# 	return render(request, 'todo/index.html')
+	# else:
+	# 	redirect to login page
+	return render(request, 'todo/index.html')

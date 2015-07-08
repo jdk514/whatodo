@@ -9,5 +9,5 @@ urlpatterns = patterns('todo.views',
 	#url(r'^meetings$', MeetingList.as_view(), name='meetings_list'),
 	url(r'^meetings/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', MeetingList.as_view(), name="meetings_list"), # URL for all Meetings on that date
 	url(r'^meetings/(?P<meeting_pk>[0-9]+)/$', MeetingDetail.as_view(), name='meetings_detail'),
-	url(r'^$', 'index', name='task_index'),
+	url(r'^$', 'index', name='todo_index'),
 )
