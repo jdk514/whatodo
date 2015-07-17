@@ -86,7 +86,8 @@ USE_TZ = True
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = '/var/www/whatodo/whatodo/static/'
+STATIC_ROOT = BASE_DIR + '/../staticfiles/'
+#STATIC_ROOT = '/var/home/joel/Documents/whatodo/whatodo/static/'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (

@@ -5,4 +5,38 @@
     <li><a href="/todo">Todo</a></li>
 </ul>
 
+<div class="container-fluid" ng-app="gitIssues">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="panel panel-default" ng-controller="Issues">
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title pull-left" style="padding: 7.5px 5px 0 0;"><a ng-click="update_curr_label('All')">All</a></h4>
+                    <h4 class="panel-title pull-left" ng-repeat="label in labels" style="padding: 7.5px 5px 0 0;"><a ng-click="update_curr_label(label.name)">[[ label.name ]]</a></h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Issue Name</th>
+                            <th style="width:70%">Issue Status</th>
+                        </tr>
+                        <tr ng-repeat="issue in issues">
+                            <td ng-show="label_visible(issue.labels[0].name)" style="color:#[[ issue.labels[0].color ]]">[[ issue.title ]]</td>
+                            <td ng-show="label_visible(issue.labels[0].name)">[[ issue.body ]]</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
 {% endblock %}
+
+{% block javascript %}
+<script src="{{ STATIC_URL }}js/angular.js"></script>
+<script src="{{ STATIC_URL }}js/angular-ui-router.min.js"></script>
+<script src="{{ STATIC_URL }}js/gitIssues.js"></script>
+{% endblock %}
+
