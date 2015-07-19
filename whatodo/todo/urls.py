@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, url, include
 
-from .views import TaskList, MeetingList, TaskDetail, MeetingDetail, TaskDateList
+from .views import TaskList, MeetingList, TaskDetail, MeetingDetail, TaskDateList, UserList, UserDetail
 
 urlpatterns = patterns('todo.views',
 	url(r'^tasks$', TaskList.as_view(), name='tasks_list'),
@@ -9,5 +9,7 @@ urlpatterns = patterns('todo.views',
 	#url(r'^meetings$', MeetingList.as_view(), name='meetings_list'),
 	url(r'^meetings/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', MeetingList.as_view(), name="meetings_list"), # URL for all Meetings on that date
 	url(r'^meetings/(?P<meeting_pk>[0-9]+)/$', MeetingDetail.as_view(), name='meetings_detail'),
+	url(r'^users/$', UserList.as_view()),
+	url(r'^users/(?P<pk>[0-9]+)/$', UserDetail.as_view()),
 	url(r'^$', 'index', name='todo_index'),
 )

@@ -16,7 +16,7 @@ controllers.controller('taskListController', ($scope, $state, $log, $http, tasks
 		date = new Date($scope.$parent.due_date)
 		#Use the current time to set the id - should be unique
 		int_date = new Date().getTime()
-		data = {'task' : $scope.$parent.task, 'priority' : 0, 'due_date' : date, 'completed' : false}
+		data = {'task' : $scope.$parent.task, 'priority' : 0, 'due_date' : date, 'completed' : false, 'owner_id' : '1'}
 		$scope.$parent.due_date = ""
 		$scope.$parent.task = ""
 		$http({method: 'POST', url: '/todo/tasks/' + int_date + '/', data:data})
