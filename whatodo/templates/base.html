@@ -3,7 +3,10 @@
     <head>
         {% block head %}{% endblock %}
         <title>{% block title %}Django District Demo{% endblock %}</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css" />
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.datetimepicker.css" />
     </head>
     <body {% block body%} {% endblock %}>
         <div class="container">
@@ -15,7 +18,11 @@
             {% endblock %}
         </div>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
         <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js"></script>
+        <script src="{{ STATIC_URL }}js/jquery.datetimepicker.js"></script>
         {% block javascript %}
         {% endblock %}
   </body>

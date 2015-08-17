@@ -23,7 +23,7 @@ Task Tracker
                         </div>
                         <div class="form-group">
                             <label for="date">Due Date:</label>
-                            <input ng-model="$parent.date" name="date" type="datetime-local">
+                            <input class="datepicker" ng-model="$parent.date" name="date" type="datetime-local">
                         </div>
                         <input type="submit" value="Add Meeting" class="btn btn-info" />
                     </form>                    
@@ -51,7 +51,7 @@ Task Tracker
                         </div>
                         <div class="form-group">
                             <label for="due_date">Due Date:</label>
-                            <input ng-model="$parent.due_date" name="due_date" type="datetime-local">
+                            <input class="datepicker" ng-model="$parent.due_date" name="due_date" type="datetime-local">
                         </div>
                         <input type="submit" value="Add Task" class="btn btn-info" />
                     </form>
@@ -79,4 +79,13 @@ Task Tracker
 <script src="{{ STATIC_URL}}js/todoapp.js"></script>
 <script src="{{ STATIC_URL}}js/todocontrollers.js"></script>
 <script src="{{ STATIC_URL}}js/todoservices.js"></script>
+<script>
+    $(function() {
+        $( ".datepicker" ).datetimepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "1900:2012",
+        });
+    });
+</script>
 {% endblock %}
