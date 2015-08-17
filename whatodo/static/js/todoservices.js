@@ -56,7 +56,8 @@
           'task': this.task,
           'priority': this.priority,
           'due_date': this.datetime,
-          'completed': true
+          'completed': true,
+          'owner': 'joel'
         };
         return $http({
           method: 'PUT',

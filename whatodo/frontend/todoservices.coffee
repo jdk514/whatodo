@@ -35,7 +35,7 @@ services.factory('Task', ($http, $log) ->
 
         # Simple logic to update a task to completed
         complete : ->
-            data = {'task' : @task, 'priority' : @priority, 'due_date' : @datetime, 'completed' : true}
+            data = {'task' : @task, 'priority' : @priority, 'due_date' : @datetime, 'completed' : true, 'owner': 'joel'}
             $http({method: 'PUT', url: '/todo/tasks/' + @id + '/', data:data})
             .success (data) =>  
                 $log.info("Task Completed")

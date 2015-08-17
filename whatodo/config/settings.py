@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'polls',
     'rest_framework',
-    'todo'
+    'todo',
+    'user'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,6 +56,9 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'config.urls'
 
 WSGI_APPLICATION = 'config.wsgi.application'
+
+LOGIN_URL = 'django.contrib.auth.views.login'
+LOGIN_REDIRECT_URL = '/todo'
 
 
 # Database

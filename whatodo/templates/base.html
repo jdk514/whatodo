@@ -8,22 +8,30 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.datetimepicker.css" />
     </head>
-    <body {% block body%} {% endblock %}>
-        <div class="container">
-            <div class="page-header">
-                <h1>{% block header %}Whatodo{% endblock %}</h1>
-                <p class="lead"><!-- PLACE TO PUT DEMOS --></p>
-            </div>
-            {% block content %}
-            {% endblock %}
+<body {% block body%} {% endblock %}>
+    <div class="container">
+        <div class="page-header">
+            <h1>{% block header %}Whatodo{% endblock %}</h1>
+            <p class="lead"><!-- PLACE TO PUT DEMOS --></p>
         </div>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-        <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js"></script>
-        <script src="{{ STATIC_URL }}js/jquery.datetimepicker.js"></script>
+        <div>
+          {{ user }}
+          {% if user.is_anonymous %}
+          <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+          {% else %}
+          <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
+          {% endif %}
+      </div>
+      {% block content %}
+      {% endblock %}
+  </div>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.3.2/fullcalendar.min.js"></script>
+  <script src="{{ STATIC_URL }}js/jquery.datetimepicker.js"></script>
         {% block javascript %}
         {% endblock %}
-  </body>
+</body>
 </html>

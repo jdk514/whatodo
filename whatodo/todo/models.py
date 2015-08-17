@@ -6,6 +6,7 @@ class Task(models.Model):
 	priority = models.IntegerField(default=0)
 	due_date = models.DateTimeField('date due')
 	completed = models.BooleanField(default=False)
+	owner = models.ForeignKey('auth.User', related_name='tasks')
 
 	def __unicode__(self):
 		return self.task
@@ -17,4 +18,6 @@ class Meeting(models.Model):
 
 	def __unicode__(self): 
 		return self.meeting
+
+
 

@@ -21,7 +21,8 @@
         'task': $scope.$parent.task,
         'priority': 0,
         'due_date': date,
-        'completed': false
+        'completed': false,
+        'owner_id': '1'
       };
       $scope.$parent.due_date = "";
       $scope.$parent.task = "";

@@ -1,33 +1,42 @@
-from rest_framework import generics, permissions
-from .models import Task, Meeting
-from .serializers import TaskSerializer, MeetingSerializer
-from django.shortcuts import render
 from datetime import datetime, timedelta
+
+from .models import Task, Meeting
+from .permissions import IsOwnerOrReadOnly
+from .serializers import TaskSerializer, MeetingSerializer, UserSerializer
+
+from rest_framework import generics, permissions, permissions
+
+from django.shortcuts import render
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+
+
+import pdb
 
 @login_required
 def home(request):
   return HttpResponse('Home Page')
 
 
-
+#List of all uncompleted tasks
 class TaskList(generics.ListCreateAPIView):
-    model = Task
-    serializer_class = TaskSerializer
-    permission_classes = [
-        permissions.AllowAny
-    ]
+	model = Task
+	serializer_class = TaskSerializer
+	permission_classes = [
+		permissions.IsAuthenticatedOrReadOnly
+	]
 
-    # Want Tasks ordered by the date they are due
-    def get_queryset(self):
-    	tasks = Task.objects.all().order_by('due_date')
-    	return tasks
+	# Want Tasks ordered by the date they are due
+	def get_queryset(self):
+		tasks = Task.objects.all().order_by('due_date')
+		return tasks
 
+#List of all uncompleted tasks for a given date
 class TaskDateList(generics.ListCreateAPIView):
 	model = Task
 	serializer_class = TaskSerializer
 	permission_classes = [
-		permissions.AllowAny
+		permissions.IsAuthenticatedOrReadOnly
 	]
 
 	# only want to get tasks on this day
@@ -38,27 +47,39 @@ class TaskDateList(generics.ListCreateAPIView):
 		tasks = Task.objects.filter(due_date__day = day, due_date__month = month, due_date__year = year)
 		return tasks
 
+#A specific task
 class TaskDetail(generics.CreateAPIView, generics.UpdateAPIView):
 	model = Task
 	serializer_class = TaskSerializer
 	lookup_url_kwarg = 'task_pk'
-	permission_classes = [
-		permissions.AllowAny
-	]
+	permission_classes = (
+		permissions.IsAuthenticatedOrReadOnly,
+		IsOwnerOrReadOnly,
+	)
 
+	#Set owner on creation to the logged in user
+	def perform_create(self, serializer):
+		serializer.save(owner=self.request.user)
+
+#A specific meeting
 class MeetingDetail(generics.CreateAPIView):
 	model = Meeting
 	serializer_class = MeetingSerializer
 	lookup_url_kwarg = 'meeting_pk'
 	permission_classes = [
-		permissions.AllowAny
+		permissions.IsAuthenticatedOrReadOnly
 	]
 
+	#Set owner on creation to the logged in user
+	def perform_create(self, serializer):
+		serializer.save(owner=self.request.user)
+
+#List of all uncompleted Meetings
 class MeetingList(generics.ListCreateAPIView):
 	model = Meeting
 	serializer_class = MeetingSerializer
 	permission_classes = [
-		permissions.AllowAny
+		permissions.IsAuthenticatedOrReadOnly
 	]
 
 	#Only want to pull in the meetings within this week, and ordered
@@ -68,6 +89,16 @@ class MeetingList(generics.ListCreateAPIView):
 		end_date = datetime(today.year, today.month, today.day, 23, 59, 59) + timedelta(days=6)
 		meetings = Meeting.objects.filter(date__range = [start_date, end_date]).order_by('date')
 		return meetings
+
+#List of all Users
+class UserList(generics.ListAPIView):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+
+#A specific User
+class UserDetail(generics.RetrieveAPIView):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
 
 def index(request):
 	# if request.user.is_authenticated():
